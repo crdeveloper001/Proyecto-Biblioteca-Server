@@ -21,7 +21,7 @@ namespace Biblioteca_Server.Controllers
         //HTTP://LOCALHOST:5001/api/Autor/GetAllAutores/
         [HttpGet]
         [Route("GetAllAutores")]
-        public async Task<IActionResult> GetAllAutores()
+        public IActionResult GetAllAutores()
         {
             if (service.GetAllAutores() == null)
             {
@@ -34,7 +34,7 @@ namespace Biblioteca_Server.Controllers
         }
         [Route("PostAutor")]
         [HttpPost]
-        public async Task<IActionResult> PostAutor([FromBody] AutorDTO autor)
+        public IActionResult PostAutor([FromBody] AutorDTO autor)
         {
             if (autor != null)
             {
