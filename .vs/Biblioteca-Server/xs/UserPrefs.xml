@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{C45F5410-BF98-4DD8-9D05-108093D32119}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="global.json">
+    <Files>
+      <File FileName="Controllers/AutorController.cs" Line="13" Column="5" />
+      <File FileName="global.json" Line="8" Column="2" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Biblioteca-Server" expanded="True">
+            <Node name="Biblioteca-Server" expanded="True">
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True" />
+              <Node name="DatabaseAccess" expanded="True" />
+              <Node name="global.json" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.ItemProperties.Biblioteca-Server PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

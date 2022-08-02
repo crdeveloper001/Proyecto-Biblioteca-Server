@@ -1,0 +1,91 @@
+{
+  "format": 1,
+  "restore": {
+    "/home/claudio/Desktop/Proyectos de Programacion/BACKEND/ASP NET CORE WEB API/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj": {}
+  },
+  "projects": {
+    "/home/claudio/Desktop/Proyectos de Programacion/BACKEND/ASP NET CORE WEB API/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/home/claudio/Desktop/Proyectos de Programacion/BACKEND/ASP NET CORE WEB API/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
+        "projectName": "Biblioteca-Server",
+        "projectPath": "/home/claudio/Desktop/Proyectos de Programacion/BACKEND/ASP NET CORE WEB API/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
+        "packagesPath": "/home/claudio/.nuget/packages/",
+        "outputPath": "/home/claudio/Desktop/Proyectos de Programacion/BACKEND/ASP NET CORE WEB API/Biblioteca-Server/Biblioteca-Server/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/home/claudio/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net6.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net6.0": {
+            "targetAlias": "net6.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net6.0": {
+          "targetAlias": "net6.0",
+          "dependencies": {
+            "Dapper": {
+              "target": "Package",
+              "version": "[2.0.123, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.6, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[6.0.6, )"
+            },
+            "MySql.Data": {
+              "target": "Package",
+              "version": "[8.0.29, )"
+            },
+            "MySql.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[6.0.1, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.2.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
