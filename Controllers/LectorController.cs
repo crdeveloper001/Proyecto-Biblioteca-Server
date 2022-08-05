@@ -14,20 +14,35 @@ namespace Biblioteca_Server.Controllers
     public class LectorController : ControllerBase
     {
         
-        private LectorService service = new LectorService();
+        private LectorService _service = new LectorService();
 
         //HTTP://LOCALHOST:5001/api/Lector/GetAllAutores/
         [HttpGet]
         [Route("GetAllLector")]
         public async Task<IActionResult> GetCredencials()
         {
-            if (service.GetAllLectores() == null)
+            if (_service.GetAllLectores() == null)
             {
                 return Problem("NO EXISTE INFORMACION A CONSULTAR");
             }
             else
             {
-                return Ok(service.GetAllLectores());
+                return Ok(_service.GetAllLectores());
+            }
+        }
+        
+        [Route("PostSearchByName")]
+        [HttpPost]
+        public IActionResult PostSearchByName(string name)
+        {
+            if (name != String.Empty)
+            {
+                return Ok(_service.SearchLectorByName(name));
+            }
+            else
+            {
+                return BadRequest(
+                    "Error al validar la informacion, verifique que haya enviado la informacion");
             }
         }
         [Route("PostLector")]
@@ -36,7 +51,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (autor != null)
             {
-                return Ok(service.RegisterNewLector(autor));
+                return Ok(_service.RegisterNewLector(autor));
             }
             else
             {
@@ -49,7 +64,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (update != null)
             {
-                return Ok(service.UpdateCurrentLector(update));
+                return Ok(_service.UpdateCurrentLector(update));
             }
             else
             {
@@ -62,7 +77,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (id != "")
             {
-                return Ok(service.DeleteSelectLector(id));
+                return Ok(_service.DeleteSelectLector(id));
             }
             else
             {

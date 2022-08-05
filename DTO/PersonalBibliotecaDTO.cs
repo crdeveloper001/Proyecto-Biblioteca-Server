@@ -2,6 +2,8 @@ namespace Biblioteca_Server.DTO;
 
 public class PersonalBibliotecaDTO
 {
+  
+
     public string usuario { get; set; }
     public string contraseña { get; set; }
     public string nombre { get; set; }

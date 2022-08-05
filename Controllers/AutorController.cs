@@ -16,20 +16,35 @@ namespace Biblioteca_Server.Controllers
     [ApiController]
     public class AutorController : ControllerBase
     {
-        private AutorService service = new AutorService();
+        private AutorService _service = new AutorService();
 
         //HTTP://LOCALHOST:5001/api/Autor/GetAllAutores/
         [HttpGet]
         [Route("GetAllAutores")]
         public IActionResult GetAllAutores()
         {
-            if (service.GetAllAutores() == null)
+            if (_service.GetAllAutores() == null)
             {
                 return Problem("NO EXISTE INFORMACION A CONSULTAR");
             }
             else
             {
-                return Ok(service.GetAllAutores());
+                return Ok(_service.GetAllAutores());
+            }
+        }
+      
+        [Route("PostSearchByName")]
+        [HttpPost]
+        public IActionResult PostSearchByName(string name)
+        {
+            if (name != String.Empty)
+            {
+                return Ok(_service.SearchAutorByName(name));
+            }
+            else
+            {
+                return BadRequest(
+                    "Error al validar la informacion, verifique que haya enviado la informacion");
             }
         }
         [Route("PostAutor")]
@@ -38,7 +53,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (autor != null)
             {
-                return Ok(service.RegisterNewAutor(autor));
+                return Ok(_service.RegisterNewAutor(autor));
             }
             else
             {
@@ -51,7 +66,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (update != null)
             {
-                return Ok(service.UpdateCurrentAutor(update));
+                return Ok(_service.UpdateCurrentAutor(update));
             }
             else
             {
@@ -64,7 +79,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (id != "")
             {
-                return Ok(service.DeleteSelectAutor(id));
+                return Ok(_service.DeleteSelectAutor(id));
             }
             else
             {

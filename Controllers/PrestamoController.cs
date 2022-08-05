@@ -14,19 +14,34 @@ namespace Biblioteca_Server.Controllers
     public class PrestamoController : ControllerBase
     {
         
-         private PrestamoService service = new PrestamoService();
+         private PrestamoService _service = new PrestamoService();
          //HTTP://LOCALHOST:5001/api/Prestamo/GetAllPrestamos/
         [HttpGet]
         [Route("GetAllPrestamos")]
         public async Task<IActionResult> GetAllPrestamos()
         {
-            if (service.GetAllPrestamos() == null)
+            if (_service.GetAllPrestamos() == null)
             {
                 return Problem("NO EXISTE INFORMACION A CONSULTAR");
             }
             else
             {
-                 return Ok(service.GetAllPrestamos());
+                 return Ok(_service.GetAllPrestamos());
+            }
+        }
+         
+        [Route("PostSearchByName")]
+        [HttpPost]
+        public IActionResult PostSearchByName(string name)
+        {
+            if (name != String.Empty)
+            {
+                return Ok(_service.SearchByLectorPrestamo(name));
+            }
+            else
+            {
+                return BadRequest(
+                    "Error al validar la informacion, verifique que haya enviado la informacion");
             }
         }
         [Route("PostPrestamo")]
@@ -35,7 +50,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (prestamo != null)
             {
-                return Ok(service.RegisterNewPrestamo(prestamo));
+                return Ok(_service.RegisterNewPrestamo(prestamo));
             }
             else
             {
@@ -48,7 +63,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (update != null)
                 {
-                    return Ok(service.UpdateCurrentPrestamo(update));
+                    return Ok(_service.UpdateCurrentPrestamo(update));
                 }
                 else
                 {
@@ -62,7 +77,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (id != "")
             {
-                return Ok(service.DeleteSelectPrestamo(id));
+                return Ok(_service.DeleteSelectPrestamo(id));
             }
             else
             {

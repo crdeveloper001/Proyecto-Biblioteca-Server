@@ -15,20 +15,35 @@ namespace Biblioteca_Server.Controllers
     public class PersonalBibliotecaController : ControllerBase
     {
         
-        private PersonalBibliotecaService service = new PersonalBibliotecaService();
+        private PersonalBibliotecaService _service = new PersonalBibliotecaService();
 
         //HTTP://LOCALHOST:5001/api/PersonalBiblioteca/GetAllAutores/
         [HttpGet]
         [Route("GetAllPersonalBiblioteca")]
         public async Task<IActionResult> GetAllPersonalBiblioteca()
         {
-            if (service.GetAllPersonalBiblioteca() == null)
+            if (_service.GetAllPersonalBiblioteca() == null)
             {
                 return Problem("NO EXISTE INFORMACION A CONSULTAR");
             }
             else
             {
-                return Ok(service.GetAllPersonalBiblioteca());
+                return Ok(_service.GetAllPersonalBiblioteca());
+            }
+        }
+         
+        [Route("PostSearchByName")]
+        [HttpPost]
+        public IActionResult PostSearchByName(string name)
+        {
+            if (name != String.Empty)
+            {
+                return Ok(_service.SearchByName(name));
+            }
+            else
+            {
+                return BadRequest(
+                    "Error al validar la informacion, verifique que haya enviado la informacion");
             }
         }
         [Route("PostPersonalBiblioteca")]
@@ -37,7 +52,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (persona != null)
             {
-                return Ok(service.RegisterNewPersonalBiblioteca(persona));
+                return Ok(_service.RegisterNewPersonalBiblioteca(persona));
             }
             else
             {
@@ -50,7 +65,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (update != null)
                 {
-                    return Ok(service.UpdateCurrentPersonalBiblioteca(update));
+                    return Ok(_service.UpdateCurrentPersonalBiblioteca(update));
                 }
                 else
                 {
@@ -64,7 +79,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (id != "")
             {
-                return Ok(service.DeleteSelectedPersonalBiblioteca(id));
+                return Ok(_service.DeleteSelectedPersonalBiblioteca(id));
             }
             else
             {

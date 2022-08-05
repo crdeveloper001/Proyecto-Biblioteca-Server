@@ -8,7 +8,7 @@ namespace Biblioteca_Server.Controllers
     [ApiController]
     public class LibroController : ControllerBase
     {
-        private LibroService service = new LibroService();
+        private LibroService _service = new LibroService();
 
         //HTTP://LOCALHOST:5001/api/Libro/GetAllAutores/
         [HttpGet]
@@ -17,26 +17,40 @@ namespace Biblioteca_Server.Controllers
         {
             await Task.Run((() =>
             {
-                if (service != null && service.GetAllLibro() == null)
+                if (_service != null && _service.GetAllLibro() == null)
                 {
                     return Problem("NO EXISTE INFORMACION A CONSULTAR");
                 }
                 else
                 {
-                    return Ok(service.GetAllLibro());
+                    return Ok(_service?.GetAllLibro());
                 }
             }));
 
             return null!;
         }
-
+         
+        [Route("PostSearchByName")]
+        [HttpPost]
+        public IActionResult PostSearchByName(string name)
+        {
+            if (name != String.Empty)
+            {
+                return Ok(_service.SearchLibroByName(name));
+            }
+            else
+            {
+                return BadRequest(
+                    "Error al validar la informacion, verifique que haya enviado la informacion");
+            }
+        }
         [Route("PostLibro")]
         [HttpPost]
         public async Task<IActionResult> PostLibro([FromBody] LibroDTO libro)
         {
             if (libro != null)
             {
-                return Ok(service.RegisterNewLibro(libro));
+                return Ok(_service.RegisterNewLibro(libro));
             }
             else
             {
@@ -50,7 +64,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (update != null)
             {
-                return Ok(service.UpdateCurrentLibro(update));
+                return Ok(_service.UpdateCurrentLibro(update));
             }
             else
             {
@@ -64,7 +78,7 @@ namespace Biblioteca_Server.Controllers
         {
             if (id != "")
             {
-                return Ok(service.DeleteSelectLibro(id));
+                return Ok(_service.DeleteSelectLibro(id));
             }
             else
             {

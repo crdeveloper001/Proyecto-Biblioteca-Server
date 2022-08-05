@@ -2,6 +2,8 @@ namespace Biblioteca_Server.DTO;
 
 public class LectorDTO
 {
+ 
+
     public string cedula { get; set; }
     public string nombre { get; set; }
     public string apellidos { get; set; }
