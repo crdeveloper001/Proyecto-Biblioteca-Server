@@ -15,21 +15,16 @@ namespace Biblioteca_Server.Controllers
         [Route("GetAllLibro")]
         public async Task<IActionResult> GetAllLibro()
         {
-            await Task.Run((() =>
+            if (_service != null && _service.GetAllLibro() == null)
             {
-                if (_service != null && _service.GetAllLibro() == null)
-                {
-                    return Problem("NO EXISTE INFORMACION A CONSULTAR");
-                }
-                else
-                {
-                    return Ok(_service?.GetAllLibro());
-                }
-            }));
-
-            return null!;
+                return Problem("NO EXISTE INFORMACION A CONSULTAR");
+            }
+            else
+            {
+                return Ok(_service?.GetAllLibro());
+            }
         }
-         
+
         [Route("PostSearchByName")]
         [HttpPost]
         public IActionResult PostSearchByName(string name)

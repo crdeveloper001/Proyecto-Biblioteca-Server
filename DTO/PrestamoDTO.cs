@@ -8,7 +8,7 @@ public class PrestamoDTO
     public string lector { get; set; }
     public string libro { get; set; }
     public string personalBiblioteca { get; set; }
-    public string fechaPrestamo { get; set; }
-    public string fechaDevolucion { get; set; }
-    public string FechaDevuelto { get; set; }
+    public string? fechaPrestamo { get; set; }
+    public string? fechaDevolucion { get; set; }
+    public string? FechaDevuelto { get; set; }
 }

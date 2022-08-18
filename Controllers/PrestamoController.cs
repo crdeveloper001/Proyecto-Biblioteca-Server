@@ -48,6 +48,10 @@ namespace Biblioteca_Server.Controllers
         [HttpPost]
         public async Task<IActionResult> PostPrestamo([FromBody] PrestamoDTO prestamo)
         {
+            prestamo.fechaPrestamo = DateTime.Now.ToString();
+            prestamo.fechaDevolucion = DateTime.Now.ToString();
+            prestamo.FechaDevuelto = DateTime.Now.ToString();
+            
             if (prestamo != null)
             {
                 return Ok(_service.RegisterNewPrestamo(prestamo));

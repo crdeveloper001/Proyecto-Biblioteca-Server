@@ -9573,19 +9573,19 @@
     ]
   },
   "packageFolders": {
-    "/home/claudio/.nuget/packages/": {}
+    "/home/claudiogonzalezhernandez/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/claudio/Desktop/Proyectos de Programacion/BACKEND/ASP NET CORE WEB API/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
+      "projectUniqueName": "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
       "projectName": "Biblioteca-Server",
-      "projectPath": "/home/claudio/Desktop/Proyectos de Programacion/BACKEND/ASP NET CORE WEB API/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
-      "packagesPath": "/home/claudio/.nuget/packages/",
-      "outputPath": "/home/claudio/Desktop/Proyectos de Programacion/BACKEND/ASP NET CORE WEB API/Biblioteca-Server/Biblioteca-Server/obj/",
+      "projectPath": "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
+      "packagesPath": "/home/claudiogonzalezhernandez/.nuget/packages/",
+      "outputPath": "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/claudio/.nuget/NuGet/NuGet.Config"
+        "/home/claudiogonzalezhernandez/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -9654,7 +9654,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.302/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.107/RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -6,6 +6,7 @@ public class LibroDTO
 
     public string isbn { get; set; }
     public string titulo { get; set; }
+    public string autor { get; set; }
     public string editorial { get; set; }
     public int añoPublicacion { get; set; }
     public string genero { get; set; }
