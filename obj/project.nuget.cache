@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Y2vbdkg5VibhtfLKuOEBQnwHSm4xVj3p8Obr6wERkN7+4YRQI8OoGROR/UeWggGZNZYmWmnjgjGRG1Rp+fankg==",
+  "dgSpecHash": "QQTSd1IHkdE5NjVQ5dZaJz78Apcl5tIlSUE87UJvVE5yvTsmfnnNPgiRLCh3Z1PFzRerm6uNYyrk87u2idiymw==",
   "success": true,
-  "projectFilePath": "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
+  "projectFilePath": "/home/claudiogonzalezhernandez/Documents/PROYECTOS DE SOFTWARE/Proyecto-Biblioteca-Server/Biblioteca-Server.csproj",
   "expectedPackageFiles": [
     "/home/claudiogonzalezhernandez/.nuget/packages/bouncycastle.netcore/1.8.5/bouncycastle.netcore.1.8.5.nupkg.sha512",
     "/home/claudiogonzalezhernandez/.nuget/packages/dapper/2.0.123/dapper.2.0.123.nupkg.sha512",

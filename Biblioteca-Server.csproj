@@ -1,6 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
- <ProjectGuid>
-
+ 
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
@@ -32,6 +31,6 @@
       <None Remove="libwkhtmltox.dylib" />
       <None Remove="libwkhtmltox.so" />
     </ItemGroup>
- </ProjectGuid>
+
 
 </Project>

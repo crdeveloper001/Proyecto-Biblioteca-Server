@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj": {}
+    "/home/claudiogonzalezhernandez/Documents/PROYECTOS DE SOFTWARE/Proyecto-Biblioteca-Server/Biblioteca-Server.csproj": {}
   },
   "projects": {
-    "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj": {
+    "/home/claudiogonzalezhernandez/Documents/PROYECTOS DE SOFTWARE/Proyecto-Biblioteca-Server/Biblioteca-Server.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
+        "projectUniqueName": "/home/claudiogonzalezhernandez/Documents/PROYECTOS DE SOFTWARE/Proyecto-Biblioteca-Server/Biblioteca-Server.csproj",
         "projectName": "Biblioteca-Server",
-        "projectPath": "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/Biblioteca-Server.csproj",
+        "projectPath": "/home/claudiogonzalezhernandez/Documents/PROYECTOS DE SOFTWARE/Proyecto-Biblioteca-Server/Biblioteca-Server.csproj",
         "packagesPath": "/home/claudiogonzalezhernandez/.nuget/packages/",
-        "outputPath": "/home/claudiogonzalezhernandez/Documents/BACKUP UBUNUT/ESCRITORIO/Proyecto Randoplh/Biblioteca-Server/Biblioteca-Server/obj/",
+        "outputPath": "/home/claudiogonzalezhernandez/Documents/PROYECTOS DE SOFTWARE/Proyecto-Biblioteca-Server/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/claudiogonzalezhernandez/.nuget/NuGet/NuGet.Config"
