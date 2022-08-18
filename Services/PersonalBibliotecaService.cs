@@ -79,7 +79,7 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
         catch (Exception errorInsert)
         {
             return errorInsert.Message;
-        } 
+        }
     }
 
     public PersonalBibliotecaDTO UpdateCurrentPersonalBiblioteca(PersonalBibliotecaDTO update)
@@ -111,9 +111,20 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute($"DELETE FROM personalbiblioteca where usuario='{id}'");
+                var delete = connection.Execute($"DELETE FROM personalbiblioteca where usuario='{id}'");
 
-                return "Usuario con cedula=> " + id + " Eliminado";
+                switch (delete)
+                {
+                    case 0:
+                        return "EL usuario no existe, intentelo nuevamente";
+                        break;
+                    case 1:
+                        return "El usuario: " + id + " fue eliminado";
+                        break;
+
+                    default:
+                        return "Ocurrio un error interno y no se pudo eliminar el valor";
+                }
             }
         }
         catch (Exception e)
@@ -123,5 +134,5 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
         }
     }
 
-   
+
 }

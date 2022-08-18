@@ -40,7 +40,7 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
                     apellidos = UserInfo.apellidos,
                     nacionalidad = UserInfo.nacionalidad,
                     codigoAutor = UserInfo.codigoAutor,
-                   
+
                 };
                 if (payload == null)
                 {
@@ -108,9 +108,20 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute($"DELETE FROM autor where codigoAutor='{id}'");
+                var delete = connection.Execute($"DELETE FROM autor where codigoAutor='{id}'");
 
-                return "Autor con ID=> " + id + " Eliminado";
+                switch (delete)
+                {
+                    case 0:
+                        return "EL autor no existe, intentelo nuevamente";
+                        break;
+                    case 1:
+                        return "El autor: " + id + " fue eliminado";
+                        break;
+
+                    default:
+                        return "Ocurrio un error interno y no se pudo eliminar el valor";
+                }
             }
         }
         catch (Exception e)
@@ -120,5 +131,5 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
         }
     }
 
-   
+
 }

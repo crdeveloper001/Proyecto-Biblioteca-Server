@@ -8,11 +8,11 @@ namespace Biblioteca_Server.Services;
 
 public class LectorService : ILector
 {
-     private DatabaseDAO dbaccess = new DatabaseDAO();
-     public string ErrorHandler(string errorMessage)
-     {
-         return errorMessage;
-     }
+    private DatabaseDAO dbaccess = new DatabaseDAO();
+    public string ErrorHandler(string errorMessage)
+    {
+        return errorMessage;
+    }
     public List<LectorDTO> GetAllLectores()
     {
         using (var connection = new MySqlConnection("Server=" + dbaccess.GetUrlDatabase() + ";Port=3306;" +
@@ -36,15 +36,15 @@ public class LectorService : ILector
 
                 LectorDTO payload = new LectorDTO()
                 {
-                   nombre = UserInfo.nombre,
-                   apellidos = UserInfo.apellidos,
-                   cedula = UserInfo.cedula,
-                   direccion = UserInfo.direccion,
-                   edad = UserInfo.edad,
-                   email = UserInfo.email,
-                   telefono = UserInfo.telefono,
-                   gradoAcademico = UserInfo.gradoAcademico
-                   
+                    nombre = UserInfo.nombre,
+                    apellidos = UserInfo.apellidos,
+                    cedula = UserInfo.cedula,
+                    direccion = UserInfo.direccion,
+                    edad = UserInfo.edad,
+                    email = UserInfo.email,
+                    telefono = UserInfo.telefono,
+                    gradoAcademico = UserInfo.gradoAcademico
+
                 };
                 if (payload == null)
                 {
@@ -112,9 +112,20 @@ public class LectorService : ILector
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute($"DELETE FROM lector where cedula='{id}'");
+                var delete = connection.Execute($"DELETE FROM lector where cedula='{id}'");
 
-                return "Lector con cedula=> " + id + " Eliminado";
+                switch (delete)
+                {
+                    case 0:
+                        return "EL lector no existe, intentelo nuevamente";
+                        break;
+                    case 1:
+                        return "El lector: " + id + " fue eliminado";
+                        break;
+
+                    default:
+                        return "Ocurrio un error interno y no se pudo eliminar el valor";
+                }
             }
         }
         catch (Exception e)
@@ -124,5 +135,5 @@ public class LectorService : ILector
         }
     }
 
-   
+
 }

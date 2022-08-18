@@ -113,9 +113,20 @@ public class LibroService : ILibro
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute($"DELETE FROM libro where isbn='{id}'");
+                var delete = connection.Execute($"DELETE FROM libro where isbn='{id}'");
 
-                return "Libro con isbn=> " + id + " Eliminado";
+                switch (delete)
+                {
+                    case 0:
+                        return "EL libro no existe, intentelo nuevamente";
+                        break;
+                    case 1:
+                        return "El libro: " + id + " fue eliminado";
+                        break;
+
+                    default:
+                        return "Ocurrio un error interno y no se pudo eliminar el valor";
+                }
             }
         }
         catch (Exception e)
