@@ -17,7 +17,7 @@ public class PrestamoService : IPrestamo
     {
         using (var connection = new MySqlConnection("Server=" + dbaccess.GetUrlDatabase() + ";Port=3306;" +
                                                     "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
-                                                    dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword() + ";Convert Zero Datetime=True"))
+                                                    dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()+";Convert Zero Datetime=True"))
         {
             return connection.Query<PrestamoDTO>("SELECT * FROM prestamo").ToList();
         }
@@ -29,7 +29,7 @@ public class PrestamoService : IPrestamo
         {
             using (var connection = new MySqlConnection("Server=" + dbaccess.GetUrlDatabase() + ";Port=3306;" +
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
-                                                        dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword() + ";CHARSET=utf8;convert zero datetime=True"))
+                                                        dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()+";CHARSET=utf8;convert zero datetime=True"))
             {
                 var UserInfo = connection.QuerySingle(
                     $"select  * from prestamo where lector='{lector}'");
@@ -67,10 +67,10 @@ public class PrestamoService : IPrestamo
         {
             using (var connection = new MySqlConnection("Server=" + dbaccess.GetUrlDatabase() + ";Port=3306;" +
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
-                                                        dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword() + ";CHARSET=utf8"))
+                                                        dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()+";CHARSET=utf8"))
             {
-
-
+               
+              
                 connection.Execute(
                     $"INSERT INTO prestamo(" +
                     $"idPrestamo," +
@@ -82,7 +82,7 @@ public class PrestamoService : IPrestamo
                     $"fechaDevuelto) " +
                     $"VALUES ('{prestamo.idPrestamo}','{prestamo.lector}','{prestamo.libro}','{prestamo.personalBiblioteca}','{prestamo.fechaPrestamo}','{prestamo.fechaDevolucion}','{prestamo.FechaDevuelto}')");
 
-                return "Prestamo: " + prestamo.lector + "Insertado a la base de datos";
+                 return "Prestamo: " + prestamo.idPrestamo + " ha sido insertado en la base de datos";
             }
         }
         catch (Exception errorInsert)
@@ -120,7 +120,6 @@ public class PrestamoService : IPrestamo
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-
                 var delete = connection.Execute($"DELETE FROM prestamo where idPrestamo='{id}'");
 
                 switch (delete)
@@ -135,14 +134,14 @@ public class PrestamoService : IPrestamo
                     default:
                         return "Ocurrio un error interno y no se pudo eliminar el valor";
                 }
-
             }
         }
         catch (Exception e)
         {
-            return e.Message;
+            Console.WriteLine(e);
+            throw;
         }
     }
 
-
+  
 }

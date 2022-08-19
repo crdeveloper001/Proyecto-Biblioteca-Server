@@ -40,7 +40,7 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
                     apellidos = UserInfo.apellidos,
                     nacionalidad = UserInfo.nacionalidad,
                     codigoAutor = UserInfo.codigoAutor,
-
+                   
                 };
                 if (payload == null)
                 {
@@ -70,7 +70,7 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
                 connection.Execute(
                     $"INSERT INTO autor(codigoAutor,nombre,apellidos,nacionalidad) VALUES ('{autor.codigoAutor}','{autor.nombre}','{autor.apellidos}','{autor.nacionalidad}')");
 
-                return "autor: " + autor.nombre + "Insertado a la base de datos";
+                return "Autor: " + autor.nombre + " ha sido insertado en la base de datos";
             }
         }
         catch (Exception errorInsert)
@@ -131,5 +131,5 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
         }
     }
 
-
+   
 }

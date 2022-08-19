@@ -73,13 +73,13 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
                     $"INSERT INTO personalbiblioteca(usuario,contraseña,nombre,apellidos,email,telefono,direccion) " +
                     $"VALUES ('{personal.usuario}','{personal.contraseña}','{personal.nombre}','{personal.apellidos}','{personal.email}','{personal.telefono}','{personal.direccion}')");
 
-                return "Usuario: " + personal.nombre + "Insertado a la base de datos";
+                return "Usuario: " + personal.usuario + " ha sido insertado en la base de datos";
             }
         }
         catch (Exception errorInsert)
         {
             return errorInsert.Message;
-        }
+        } 
     }
 
     public PersonalBibliotecaDTO UpdateCurrentPersonalBiblioteca(PersonalBibliotecaDTO update)
@@ -91,7 +91,7 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
                 connection.Execute(
-                    $"UPDATE personalbiblioteca SET contraseña='{update.contraseña}',email='{update.email}',telefono='{update.telefono}',direccion='{update.direccion}' where usuario='{update.usuario}'");
+                    $"UPDATE personalbiblioteca SET contraseña='{update.contraseña}',email='{update.email}',nombre='{update.nombre}', apellidos='{update.apellidos}', telefono='{update.telefono}',direccion='{update.direccion}' where usuario='{update.usuario}'");
 
                 return update;
 
@@ -111,15 +111,16 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
+
                 var delete = connection.Execute($"DELETE FROM personalbiblioteca where usuario='{id}'");
 
                 switch (delete)
                 {
                     case 0:
-                        return "EL usuario no existe, intentelo nuevamente";
+                        return "EL biblotecario no existe, intentelo nuevamente";
                         break;
                     case 1:
-                        return "El usuario: " + id + " fue eliminado";
+                        return "El bibliotecario: " + id + " fue eliminado";
                         break;
 
                     default:
@@ -134,5 +135,5 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
         }
     }
 
-
+   
 }

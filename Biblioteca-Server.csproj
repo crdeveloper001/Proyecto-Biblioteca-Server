@@ -1,5 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
- 
+
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <Nullable>enable</Nullable>
@@ -7,7 +7,6 @@
         <RootNamespace>Biblioteca_Server</RootNamespace>
         <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
         <SynchReleaseVersion>false</SynchReleaseVersion>
-       
     </PropertyGroup>
 
     <ItemGroup>
@@ -31,6 +30,4 @@
       <None Remove="libwkhtmltox.dylib" />
       <None Remove="libwkhtmltox.so" />
     </ItemGroup>
-
-
 </Project>

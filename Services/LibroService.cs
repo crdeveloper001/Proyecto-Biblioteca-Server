@@ -6,13 +6,13 @@ using MySql.Data.MySqlClient;
 
 namespace Biblioteca_Server.Services;
 
-public class LibroService : ILibro
+public class LibroService :ILibro
 {
-    private DatabaseDAO dbaccess = new DatabaseDAO();
-    public string ErrorHandler(string errorMessage)
-    {
-        return errorMessage;
-    }
+     private DatabaseDAO dbaccess = new DatabaseDAO();
+     public string ErrorHandler(string errorMessage)
+     {
+         return errorMessage;
+     }
     public List<LibroDTO> GetAllLibro()
     {
         using (var connection = new MySqlConnection("Server=" + dbaccess.GetUrlDatabase() + ";Port=3306;" +
@@ -36,16 +36,16 @@ public class LibroService : ILibro
 
                 LibroDTO payload = new LibroDTO()
                 {
-                    titulo = UserInfo.titulo,
                     isbn = UserInfo.isbn,
+                    titulo = UserInfo.titulo,
                     autor = UserInfo.autor,
                     genero = UserInfo.genero,
                     editorial = UserInfo.editorial,
                     añoPublicacion = UserInfo.añoPublicacion,
                     cantidad = UserInfo.cantidad,
                     imagen = UserInfo.imagen,
-
-
+                   
+                   
                 };
                 if (payload == null)
                 {
@@ -75,7 +75,7 @@ public class LibroService : ILibro
                 connection.Execute(
                     $"INSERT INTO libro(isbn,titulo,autor,editorial,añoPublicacion,genero,cantidad,imagen) VALUES ('{libro.isbn}','{libro.titulo}','{libro.autor}','{libro.editorial}','{libro.añoPublicacion}','{libro.genero}','{libro.cantidad}','{libro.imagen}')");
 
-                return "libro: " + libro.titulo + "Insertado a la base de datos";
+                return "Libro: " + libro.titulo + " ha sido insertado en la base de datos";
             }
         }
         catch (Exception errorInsert)
@@ -93,7 +93,7 @@ public class LibroService : ILibro
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
                 connection.Execute(
-                    $"UPDATE libro SET autor='{update.autor}', titulo='{update.titulo}',editorial='{update.editorial}',añoPublicacion='{update.añoPublicacion}',genero='{update.genero}',cantidad='{update.cantidad}' where isbn='{update.isbn}'");
+                    $"UPDATE libro SET titulo='{update.titulo}',autor='{update.autor}', editorial='{update.editorial}',añoPublicacion='{update.añoPublicacion}',genero='{update.genero}',cantidad='{update.cantidad}' where isbn='{update.isbn}'");
 
                 return update;
 
@@ -136,5 +136,5 @@ public class LibroService : ILibro
         }
     }
 
-
+   
 }

@@ -8,11 +8,11 @@ namespace Biblioteca_Server.Services;
 
 public class LectorService : ILector
 {
-    private DatabaseDAO dbaccess = new DatabaseDAO();
-    public string ErrorHandler(string errorMessage)
-    {
-        return errorMessage;
-    }
+     private DatabaseDAO dbaccess = new DatabaseDAO();
+     public string ErrorHandler(string errorMessage)
+     {
+         return errorMessage;
+     }
     public List<LectorDTO> GetAllLectores()
     {
         using (var connection = new MySqlConnection("Server=" + dbaccess.GetUrlDatabase() + ";Port=3306;" +
@@ -36,15 +36,15 @@ public class LectorService : ILector
 
                 LectorDTO payload = new LectorDTO()
                 {
-                    nombre = UserInfo.nombre,
-                    apellidos = UserInfo.apellidos,
-                    cedula = UserInfo.cedula,
-                    direccion = UserInfo.direccion,
-                    edad = UserInfo.edad,
-                    email = UserInfo.email,
-                    telefono = UserInfo.telefono,
-                    gradoAcademico = UserInfo.gradoAcademico
-
+                   nombre = UserInfo.nombre,
+                   apellidos = UserInfo.apellidos,
+                   cedula = UserInfo.cedula,
+                   direccion = UserInfo.direccion,
+                   edad = UserInfo.edad,
+                   email = UserInfo.email,
+                   telefono = UserInfo.telefono,
+                   gradoAcademico = UserInfo.gradoAcademico
+                   
                 };
                 if (payload == null)
                 {
@@ -74,7 +74,7 @@ public class LectorService : ILector
                 connection.Execute(
                     $"INSERT INTO lector(cedula,nombre,apellidos,email,telefono,direccion,gradoAcademico,edad) VALUES ('{lector.cedula}','{lector.nombre}','{lector.apellidos}','{lector.email}','{lector.telefono}','{lector.direccion}','{lector.gradoAcademico}','{lector.edad}')");
 
-                return "lector: " + lector.nombre + "Insertado a la base de datos";
+                return "Lector: " + lector.nombre + " ha sido insertado en la base de datos";
             }
         }
         catch (Exception errorInsert)
@@ -135,5 +135,5 @@ public class LectorService : ILector
         }
     }
 
-
+   
 }
