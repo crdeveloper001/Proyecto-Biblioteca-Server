@@ -92,7 +92,7 @@ public class LibroService :ILibro
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute(
+                var updateMethod = connection.Execute(
                     $"UPDATE libro SET titulo='{update.titulo}',autor='{update.autor}', editorial='{update.editorial}',añoPublicacion='{update.añoPublicacion}',genero='{update.genero}',cantidad='{update.cantidad}' where isbn='{update.isbn}'");
 
                
