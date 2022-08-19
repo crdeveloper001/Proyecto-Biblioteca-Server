@@ -8,7 +8,7 @@ public interface ILector
     List<LectorDTO> GetAllLectores();
     Object SearchLectorByName(string lectorName);
     string RegisterNewLector(LectorDTO autor);
-    LectorDTO UpdateCurrentLector(LectorDTO update);
+    Object UpdateCurrentLector(LectorDTO update);
     string DeleteSelectLector(string id);
     
     String ErrorHandler(String errorMessage);

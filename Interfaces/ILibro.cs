@@ -8,7 +8,7 @@ public interface ILibro
     Object SearchLibroByName(string bookName);
     string RegisterNewLibro(LibroDTO autor);
     
-    LibroDTO UpdateCurrentLibro(LibroDTO update);
+    Object UpdateCurrentLibro(LibroDTO update);
   
     string DeleteSelectLibro(string id);
     

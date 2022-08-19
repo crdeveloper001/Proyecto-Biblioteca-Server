@@ -84,7 +84,7 @@ public class LibroService :ILibro
         }
     }
 
-    public LibroDTO UpdateCurrentLibro(LibroDTO update)
+    public Object UpdateCurrentLibro(LibroDTO update)
     {
         try
         {
@@ -95,7 +95,16 @@ public class LibroService :ILibro
                 connection.Execute(
                     $"UPDATE libro SET titulo='{update.titulo}',autor='{update.autor}', editorial='{update.editorial}',añoPublicacion='{update.añoPublicacion}',genero='{update.genero}',cantidad='{update.cantidad}' where isbn='{update.isbn}'");
 
-                return update;
+               
+                 switch (updateMethod)
+                {
+                    case 1:
+                        return update;
+                    case 0:
+                        return "Ocurrio un error al ejecutar la transaccion, el numero ISBN del libro no es valido o no existe";
+                    default:
+                        return "OCURRIO UN ERROR AL EJECUTAR LA TRANSACCION";
+                }
 
             }
         }

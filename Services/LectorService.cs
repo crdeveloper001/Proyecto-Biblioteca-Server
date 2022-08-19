@@ -83,7 +83,7 @@ public class LectorService : ILector
         }
     }
 
-    public LectorDTO UpdateCurrentLector(LectorDTO update)
+    public Object UpdateCurrentLector(LectorDTO update)
     {
         try
         {
@@ -91,11 +91,18 @@ public class LectorService : ILector
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute(
+                var updateMethod = connection.Execute(
                     $"UPDATE lector SET nombre = '{update.nombre}',apellidos='{update.apellidos}',email='{update.email}',telefono='{update.telefono}',direccion='{update.direccion}',gradoAcademico='{update.gradoAcademico}',edad='{update.edad}' where cedula='{update.cedula}'");
 
-                return update;
-
+                 switch (updateMethod)
+                {
+                    case 1:
+                        return update;
+                    case 0:
+                        return "Ocurrio un error al ejecutar la transaccion, la cedula del lector no es valida o no existe";
+                    default:
+                        return "OCURRIO UN ERROR AL EJECUTAR LA TRANSACCION";
+                }
             }
         }
         catch (Exception errorUpdate)

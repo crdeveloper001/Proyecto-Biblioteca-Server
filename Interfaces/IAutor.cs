@@ -11,7 +11,7 @@ public interface IAutor
     Object SearchAutorByName(string name);
     string RegisterNewAutor(AutorDTO autor);
     //Actualiza un autor existente y devuelve como respuesta el objeto con los cambios implementados
-    AutorDTO UpdateCurrentAutor(AutorDTO update);
+    Object UpdateCurrentAutor(AutorDTO update);
     //Elimina un autor mediante su id como primary key y regresa como respuesta un string de confirmacion
     string DeleteSelectAutor(string id);
     

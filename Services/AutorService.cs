@@ -40,7 +40,7 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
                     apellidos = UserInfo.apellidos,
                     nacionalidad = UserInfo.nacionalidad,
                     codigoAutor = UserInfo.codigoAutor,
-                   
+
                 };
                 if (payload == null)
                 {
@@ -79,7 +79,7 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
         }
     }
 
-    public AutorDTO UpdateCurrentAutor(AutorDTO update)
+    public Object UpdateCurrentAutor(AutorDTO update)
     {
         try
         {
@@ -87,10 +87,18 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute(
+                var updateMethod = connection.Execute(
                     $"UPDATE autor SET nombre = '{update.nombre}',apellidos='{update.apellidos}',nacionalidad='{update.nacionalidad}' where codigoAutor='{update.codigoAutor}'");
 
-                return update;
+                switch (updateMethod)
+                {
+                    case 1:
+                        return update;
+                    case 0:
+                        return "Ocurrio un error al ejecutar la transaccion, el codigo del autor no es valido o no existe";
+                    default:
+                        return "OCURRIO UN ERROR AL EJECUTAR LA TRANSACCION";
+                }
 
             }
         }
@@ -131,5 +139,5 @@ public class AutorService : IAutor //Implementa la interface con los metodo crud
         }
     }
 
-   
+
 }

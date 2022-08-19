@@ -91,7 +91,7 @@ public class PrestamoService : IPrestamo
         }
     }
 
-    public PrestamoDTO UpdateCurrentPrestamo(PrestamoDTO update)
+    public Object UpdateCurrentPrestamo(PrestamoDTO update)
     {
         try
         {
@@ -99,10 +99,19 @@ public class PrestamoService : IPrestamo
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute(
+                var updateMethod = connection.Execute(
                     $"UPDATE prestamo SET lector='{update.lector}',libro='{update.libro}',personalBiblioteca='{update.personalBiblioteca}',fechaPrestamo='{update.fechaPrestamo}',fechaDevolucion='{update.fechaDevolucion}',FechaDevuelto='{update.FechaDevuelto}' where idPrestamo='{update.idPrestamo}'");
 
-                return update;
+               
+                 switch (updateMethod)
+                {
+                    case 1:
+                        return update;
+                    case 0:
+                        return "Ocurrio un error al ejecutar la transaccion, el codigo del prestamo no es valido o no existe";
+                    default:
+                        return "OCURRIO UN ERROR AL EJECUTAR LA TRANSACCION";
+                }
 
             }
         }

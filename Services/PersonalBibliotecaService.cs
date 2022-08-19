@@ -82,7 +82,7 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
         } 
     }
 
-    public PersonalBibliotecaDTO UpdateCurrentPersonalBiblioteca(PersonalBibliotecaDTO update)
+    public Object UpdateCurrentPersonalBiblioteca(PersonalBibliotecaDTO update)
     {
         try
         {
@@ -90,11 +90,19 @@ public class PersonalBibliotecaService : IPersonalBiblioteca
                                                         "Database=" + dbaccess.GetDatabaseName() + ";Uid=" +
                                                         dbaccess.GetUsername() + ";Pwd=" + dbaccess.GetPassword()))
             {
-                connection.Execute(
+                var updateMethod = connection.Execute(
                     $"UPDATE personalbiblioteca SET contraseña='{update.contraseña}',email='{update.email}',nombre='{update.nombre}', apellidos='{update.apellidos}', telefono='{update.telefono}',direccion='{update.direccion}' where usuario='{update.usuario}'");
 
-                return update;
-
+              
+                 switch (updateMethod)
+                {
+                    case 1:
+                        return update;
+                    case 0:
+                        return "Ocurrio un error al ejecutar la transaccion, el username de la cuenta no es valido o no existe";
+                    default:
+                        return "OCURRIO UN ERROR AL EJECUTAR LA TRANSACCION";
+                }
             }
         }
         catch (Exception errorUpdate)

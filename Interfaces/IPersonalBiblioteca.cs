@@ -8,7 +8,7 @@ public interface IPersonalBiblioteca
     Object SearchByName(string userName);
     string RegisterNewPersonalBiblioteca(PersonalBibliotecaDTO autor);
     
-    PersonalBibliotecaDTO UpdateCurrentPersonalBiblioteca(PersonalBibliotecaDTO update);
+    Object UpdateCurrentPersonalBiblioteca(PersonalBibliotecaDTO update);
   
     string DeleteSelectedPersonalBiblioteca(string id);
     String ErrorHandler(String errorMessage);

@@ -7,7 +7,7 @@ public interface IPrestamo
     List<PrestamoDTO> GetAllPrestamos();
     Object SearchByLectorPrestamo(string lector);
     string RegisterNewPrestamo(PrestamoDTO autor);
-    PrestamoDTO UpdateCurrentPrestamo(PrestamoDTO update);
+    Object UpdateCurrentPrestamo(PrestamoDTO update);
     string DeleteSelectPrestamo(string id);
     String ErrorHandler(String errorMessage);
 }
